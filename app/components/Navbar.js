@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./navbar.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,11 +8,12 @@ import Report from './Report';
 import ImageSlider from "./ImageSlider";
 import ZakatSection from "./ZakatSection";
 import DonateSection from "./DonateSection";
-import Info from "./Info";
+import Info from "./Info";         
 import ContactSection from "./ContactSection";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   const navLinks = [
     { name: "Home", path: "/", id: "home" },
@@ -20,12 +21,11 @@ const Navbar = () => {
     { name: "Facilities", path: "/facilities", id: "facilities" },
     { name: "Programs", path: "/programs", id: "programs" },
     { name: "Zakat", path: "/zakat", id: "zakat" },
-     { name: "Donate", path: "/donate", id: "donate" },
+    { name: "Donate", path: "/donate", id: "donate" },
     { name: "Bank", path: "/bank", id: "bank" },
     { name: "Contacts", path: "/contacts", id: "contacts" },
   ];
 
-  // Scroll function add karein (component ke andar, return se pehle):
   const handleScroll = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -36,14 +36,12 @@ const Navbar = () => {
   return (
     <>
       <header className={styles.heroSection}>
-
         <nav className={styles.navbar}>
           <div className={styles.logo}>
             <img src="/saya logo 2.png" alt="SAYA Logo" className={styles.logoImg} />
           </div>
           <ul className={styles.navLinks}>
             {navLinks.map((link, index) => (
-              // Link ki jagah button/span use karein:
               <li key={index}>
                 <span
                   className={`${styles.link} ${pathname === link.path ? styles.active : ""}`}
@@ -53,10 +51,10 @@ const Navbar = () => {
                   {link.name}
                 </span>
               </li>
-
             ))}
           </ul>
-          {/* Hero Content */}
+        </nav>
+
           <div className={styles.heroContent}>
             <p className={styles.tagline}>Nonprofit Organization</p>
             <h1 className={styles.heroTitle}>
@@ -66,12 +64,11 @@ const Navbar = () => {
               Spreading hope and compassion through community service. Together, we uplift lives and build a brighter future for those in need.
             </p>
             <div className={styles.heroButtons}>
-              <button className={styles.donateBtn} onClick={() => handleScroll('donate')}>Donate Now</button>
-              <span  className={styles.exploreBtn} >EXPLORE MORE</span>
+
+              <button className={styles.donateBtn} onClick={() => setShowInfoModal(true)}>Donate Now</button>
+              <span className={styles.exploreBtn}>EXPLORE MORE</span>
             </div>
           </div>
-
-        </nav>
 
         <div className={styles.waveContainer}>
           <svg className={styles.waveSvg1} viewBox="0 0 1440 80" preserveAspectRatio="none">
@@ -85,17 +82,34 @@ const Navbar = () => {
           </svg>
         </div>
       </header>
+
       <Herosection />
       <ImageSlider />
       <Report />
       <ZakatSection />
       <DonateSection />
-      <Info />
       <ContactSection />
+
+      {showInfoModal && (
+        <div
+          className={styles.modalOverlay}
+          onClick={(e) =>
+            e.target === e.currentTarget && setShowInfoModal(false)
+          }
+        >
+          <div className={styles.modalWrapper}>
+            <button className={styles.model}
+              onClick={() => setShowInfoModal(false)}
+            >
+              ×
+            </button>
+
+            <Info />
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
 export default Navbar;
-
-

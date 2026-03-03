@@ -8,7 +8,8 @@ import { MdLocationOn } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-const Info = () => {
+
+const Info = ({ onClose }) => {
     const [showToast, setShowToast] = useState(false);
 
     const copyToClipboard = (text) => {
@@ -19,19 +20,26 @@ const Info = () => {
 
     return (
         <div id="bank" className={styles.Infocontainer}>
-            <h1 className={styles.make}>Make a Difference Today</h1>
-            <h2 className={styles.section}>
-                Every contribution, big or small, brings hope to those in need. Your generosity can transform lives.
-            </h2>
 
             <div className={styles.box}>
+
+                {/* Cross button - box ke andar top right */}
+                {onClose && (
+                    <button onClick={onClose} className={styles.closeBtn}>×</button>
+                )}
+
+                {/* Headings box ke andar */}
+                <h1 className={styles.make}>Make a Difference Today</h1>
+                <h2 className={styles.section} >
+                    Every contribution, big or small, brings hope to those in need. Your generosity can transform lives.
+                </h2>
+
                 <div className={styles.bankHeader}>
                     <AiOutlineBank className={styles.bankIcon} />
                     <h2 className={styles.account}>Bank Account Details</h2>
                 </div>
 
                 <div className={styles.cardsWrapper}>
-                    {/* Meezan Bank */}
                     <div className={styles.card}>
                         <div className={styles.cardBankName}>
                             <AiOutlineBank className={styles.cardIcon} />
@@ -50,7 +58,6 @@ const Info = () => {
                         </div>
                     </div>
 
-                    {/* MCB Bank */}
                     <div className={styles.card}>
                         <div className={styles.cardBankName}>
                             <AiOutlineBank className={styles.cardIcon} />
@@ -75,14 +82,12 @@ const Info = () => {
                 </p>
             </div>
 
-            {/* Toast Notification */}
             {showToast && (
                 <div className={styles.toast}>
                     <IoCheckmarkCircle className={styles.toastIcon} />
                     IBAN copied to clipboard!
                 </div>
             )}
-
         </div>
     );
 };

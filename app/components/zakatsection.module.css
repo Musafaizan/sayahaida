@@ -9,7 +9,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Watermark */
+
 .watermark {
   position: absolute;
   top: 50%;
@@ -48,7 +48,6 @@
   z-index: 1;
 }
 
-/* Percent badge */
 .percentBadge {
   display: inline-flex;
   align-items: center;
@@ -77,7 +76,7 @@
   line-height: 1.4;
 }
 
-/* Description */
+
 .zakatDesc {
   font-size: 18px;
   color: rgba(255,255,255,0.8);
@@ -89,7 +88,7 @@
   z-index: 1;
 }
 
-/* Tags */
+
 .tagsRow {
   display: flex;
   flex-wrap: wrap;
@@ -98,6 +97,12 @@
   margin-bottom: 50px;
   position: relative;
   z-index: 1;
+}
+.tagIcon {
+  font-size: 16px;
+  vertical-align: middle;
+  margin-right: 8px;
+  color: #f5a623;
 }
 
 .tag {
@@ -110,6 +115,8 @@
   font-weight: 500;
   cursor: default;
   pointer-events: none;
+  display: flex;
+  align-items: center;
 }
 
 .donateBtn {

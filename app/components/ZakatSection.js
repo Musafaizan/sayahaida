@@ -1,6 +1,10 @@
 'use client';
 import React from 'react';
 import styles from './zakatsection.module.css';
+import { FaGraduationCap } from "react-icons/fa";
+import { FaHospital } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const ZakatSection = () => {
   return (
@@ -24,10 +28,10 @@ const ZakatSection = () => {
       </p>
 
       <div className={styles.tagsRow}>
-        <div className={styles.tag}>🎓 Orphans' Education</div>
-        <div className={styles.tag}>🏥 Healthcare Access</div>
-        <div className={styles.tag}>👨‍👩‍👧 Family Upliftment</div>
-        <div className={styles.tag}>💙 Lasting Change</div>
+        <div className={styles.tag}><FaGraduationCap className={styles.tagIcon} /> Orphans' Education</div>
+        <div className={styles.tag}><FaHospital className={styles.tagIcon} /> Healthcare Access</div>
+        <div className={styles.tag}><FaUsers className={styles.tagIcon} /> Family Upliftment</div>
+        <div className={styles.tag}><FaHeart className={styles.tagIcon} /> Lasting Change</div>
       </div>
 
       <button className={styles.donateBtn}>♥ Donate Your Zakat</button>

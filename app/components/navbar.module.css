@@ -18,7 +18,7 @@
   background: rgba(0, 0, 0, 0.55);
   filter: grayscale(100%);
   z-index: 1;
-  bottom: 50px; 
+  bottom: 50px;
 }
 
 .heroSection::after {
@@ -27,25 +27,32 @@
   inset: 0;
   background: rgba(10, 10, 10, 0.45);
   z-index: 2;
-  bottom: 80px; 
+  bottom: 80px;
 }
+
 .navbar {
-  width: 92%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
-  position: absolute;
-  top: -40;
-  left: -40;
-  z-index: 10;
+    z-index: 9998;
+    box-sizing: border-box;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: #00000073;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    padding: 0px 50px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .logoImg {
-  height: 150px;        
+  height: 150px;
   width: auto;
   object-fit: contain;
 }
+
 /* Nav links */
 .navLinks {
   list-style: none;
@@ -86,7 +93,7 @@
 
 .heroContent {
   position: absolute;
-  top: 250%;
+  top: 45%;
   left: 55%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -133,7 +140,7 @@
   justify-content: center;
   align-items: center;
   gap: 40px;
-   margin-top: 50px;
+  margin-top: 50px;
 }
 
 .donateBtn {
@@ -147,7 +154,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s;
-  
+
 }
 
 .donateBtn:hover {
@@ -205,6 +212,45 @@
 }
 
 @keyframes waveFloat {
-  0%   { transform: scaleX(1) translateY(0px); }
-  100% { transform: scaleX(1.05) translateY(-6px); }
+  0% {
+    transform: scaleX(1) translateY(0px);
+  }
+
+  100% {
+    transform: scaleX(1.05) translateY(-6px);
+  }
+}
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalWrapper {
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+}
+
+.model {
+  position: absolute;
+  top: 10px;
+  right: 3px;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
