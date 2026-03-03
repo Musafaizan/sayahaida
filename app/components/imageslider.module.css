@@ -1,0 +1,194 @@
+.section {
+  width: 100%;
+  padding: 20px 0 60px;
+  background: #fff;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  margin-top: -50px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.tagline {
+  font-family: 'Courier New', monospace;
+  color: #f5a623;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 52px;
+  font-weight: 900;
+  color: #0d1b4b;
+  margin: 0 0 12px;
+  line-height: 1;
+}
+
+.underline {
+  width: 70px;
+  height: 4px;
+  background: #f5a623;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 10px 4px 20px;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  min-width: 300px;
+  max-width: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.16);
+}
+
+.imgBox {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .imgBox img {
+  transform: scale(1.06);
+}
+
+.cardContent {
+  padding: 20px;
+  border-top: 3px solid #f5a623;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d1b4b;
+  margin: 0 0 10px;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.arrowLeft,
+.arrowRight {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.arrowLeft:hover,
+.arrowRight:hover {
+  background: #f5a623;
+  color: #fff;
+  transform: scale(1.1);
+}
+/* ✅ Quote Section */
+.quoteSection {
+  text-align: center;
+  padding: 30 200px;
+  max-width: 100%;
+  margin: 20px 0 0;
+  position: relative;
+}
+
+.quoteMark {
+  font-size: 80px;
+  color: #f5a623;
+  font-family: Georgia, serif;
+  line-height: 1;
+  opacity: 0.6;
+  display: inline;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.quoteText {
+  font-family: 'Georgia', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: black;
+  line-height: 1.8;
+  margin: 0 0 24px;
+  display: inline;
+}
+
+.quoteLine {
+  width: 60px;
+  height: 3px;
+  background: #f5a623;
+  border-radius: 2px;
+  margin: 24px auto 16px;
+}
+
+.quoteAuthor {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f5a623;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+}

@@ -1,0 +1,184 @@
+.Infocontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 120px 20px 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Heading */
+.make {
+  font-size: 42px;
+  font-weight: 800;
+  color: #0d1b4b;
+  margin-bottom: 16px;
+}
+
+.section {
+  font-size: 16px;
+  color: #666;
+  max-width: 480px;
+  line-height: 1.7;
+  margin: 0 auto 40px;
+}
+
+.highlight {
+  color: #f5a623;
+}
+
+.titleLine {
+  width: 60px;
+  height: 4px;
+  background: #f5a623;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+/* Box / Card wrapper */
+.box {
+  background: #fafafa;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 580px;
+  padding: 36px;
+  margin: 0 auto 40px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+  text-align: left;
+}
+
+/* Bank header */
+.bankHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.bankIcon {
+  font-size: 28px;
+  color: #f5a623;
+}
+
+.account {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0d1b4b;
+}
+
+.cardsWrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: nowrap; /* ← wrap ko nowrap karo */
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  flex: 1 1 0;          /* ← equal width dono ko */
+  max-width: none;       /* ← max-width hata do */
+  min-width: 0;          /* ← shrink hone do */
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px); /* slight hover effect */
+}
+.cardBankName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.cardIcon {
+  font-size: 20px;
+  color: #f5a623;
+}
+
+.label {
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 4px 0;
+}
+
+.value {
+  font-size: 14px;
+  color: #111;
+  margin: 0 0 12px 0;
+}
+
+.ibanRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iban {
+  font-family: monospace;
+  font-size: 14px;
+  color: #222;
+  word-break: break-all;
+}
+
+.copyIcon {
+  font-size: 16px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.copyIcon:hover {
+  color: #f5a623;
+}
+
+/* Note */
+.note {
+  font-size: 14px;
+  color: #666;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 9999;
+  animation: slideUp 0.3s ease;
+}
+
+.toastIcon {
+  font-size: 20px;
+  color: #2e7d5e;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
