@@ -1,12 +1,10 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './report.module.css';
-import { TbMoonFilled } from "react-icons/tb";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { GiPeaceDove } from "react-icons/gi";
 import { PiPottedPlantFill } from "react-icons/pi";
 import { GoArrowRight } from "react-icons/go";
-import { BsStars } from "react-icons/bs";
 
 const Report = () => {
     const [activeSection, setActiveSection] = useState(null);
@@ -18,9 +16,8 @@ const Report = () => {
 
     const handleDonateScroll = () => {
         const section = document.getElementById('donate');
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
+        if (section) section.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(null);
     };
 
     useEffect(() => {
@@ -30,9 +27,16 @@ const Report = () => {
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    // Close popup on Escape key
+    useEffect(() => {
+        const handleKey = (e) => {
+            if (e.key === 'Escape') setActiveSection(null);
         };
+        document.addEventListener('keydown', handleKey);
+        return () => document.removeEventListener('keydown', handleKey);
     }, []);
 
     return (
@@ -54,8 +58,7 @@ const Report = () => {
                         <FaHandHoldingUsd />
                         <h3 className={styles.content1}>Ramadan Ration Drive</h3>
                         <p className={styles.text1}>
-                            Distributing essential food packages
-                            to families, ensuring no one goes hungry during the blessed month.
+                            Distributing essential food packages to families, ensuring no one goes hungry during the blessed month.
                         </p>
                     </div>
                     <GoArrowRight
@@ -67,6 +70,15 @@ const Report = () => {
                     />
                     {activeSection === 'packages' && (
                         <div className={styles.popup1}>
+                            {/* Close button for mobile */}
+                            <button
+                                onClick={() => setActiveSection(null)}
+                                style={{
+                                    position: 'absolute', top: 12, right: 14,
+                                    background: 'none', border: 'none',
+                                    fontSize: 22, cursor: 'pointer', color: '#888'
+                                }}
+                            >×</button>
                             <h3 className={styles.popup1Title}>Ramadan Ration Packages</h3>
                             <p className={styles.popup1Desc}>
                                 Your generosity ensures families receive complete, nutritious food packages.
@@ -125,8 +137,7 @@ const Report = () => {
                         <span>02</span>
                         <h3 className={styles.content2}>Iftar for the Needy</h3>
                         <p className={styles.text2}>
-                            Organizing Iftar gatherings for underprivileged
-                            families and individuals in our community.
+                            Organizing Iftar gatherings for underprivileged families and individuals in our community.
                         </p>
                     </div>
                     <GoArrowRight
@@ -138,6 +149,14 @@ const Report = () => {
                     />
                     {activeSection === 'iftar' && (
                         <div className={styles.popup2}>
+                            <button
+                                onClick={() => setActiveSection(null)}
+                                style={{
+                                    position: 'absolute', top: 12, right: 14,
+                                    background: 'none', border: 'none',
+                                    fontSize: 22, cursor: 'pointer', color: '#888'
+                                }}
+                            >×</button>
                             <h3 className={styles.popup2Title}>Ramadan 2026 - Lahore</h3>
                             <p className={styles.popup2Desc}>
                                 We are arranging Iftar drives in Ramadan 2026 in Lahore for underprivileged
@@ -165,8 +184,7 @@ const Report = () => {
                         <img src="/img13.jpg" alt="Report Image 3" />
                         <h3 className={styles.content3}>Iftar for Orphans</h3>
                         <p className={styles.text3}>
-                            Special Iftar programs dedicated to orphaned
-                            children, bringing joy and warmth to their hearts.
+                            Special Iftar programs dedicated to orphaned children, bringing joy and warmth to their hearts.
                         </p>
                     </div>
                     <GoArrowRight
@@ -178,6 +196,14 @@ const Report = () => {
                     />
                     {activeSection === 'orphan' && (
                         <div className={styles.popup3}>
+                            <button
+                                onClick={() => setActiveSection(null)}
+                                style={{
+                                    position: 'absolute', top: 12, right: 14,
+                                    background: 'none', border: 'none',
+                                    fontSize: 22, cursor: 'pointer', color: '#888'
+                                }}
+                            >×</button>
                             <h3 className={styles.popup3Title}>Orphanage Iftar Program</h3>
                             <p className={styles.popup3Desc}>
                                 We are arranging Iftar in orphanages to bring joy and warmth to orphaned
@@ -196,9 +222,10 @@ const Report = () => {
                         </div>
                     )}
                 </div>
+
             </div>
         </div>
     );
-}
+};
 
 export default Report;

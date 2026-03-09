@@ -47,7 +47,7 @@
   font-style: italic;
 }
 
-/* Slider wrapper */
+/* ===== SLIDER ===== */
 .sliderWrapper {
   display: flex;
   align-items: center;
@@ -71,34 +71,36 @@
   display: none;
 }
 
-/* Choti card */
+/* Small card */
 .cardSmall {
   min-width: 220px;
   max-width: 220px;
   height: 280px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
   scroll-snap-align: center;
   flex-shrink: 0;
   position: relative;
   transition: transform 0.3s ease;
+  border-radius: 8px;
 }
 
 .cardSmall:hover {
   transform: translateY(-5px);
 }
 
-/* Bari card */
+/* Big card */
 .cardBig {
   min-width: 300px;
   max-width: 300px;
   height: 350px;
   overflow: hidden;
-  box-shadow: 0 16px 45px rgba(0,0,0,0.18);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.18);
   scroll-snap-align: center;
   flex-shrink: 0;
   position: relative;
   transition: transform 0.3s ease;
+  border-radius: 8px;
 }
 
 .cardBig:hover {
@@ -125,13 +127,12 @@
   transform: scale(1.06);
 }
 
-/* Text overlay image ke upar */
 .overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
   padding: 20px 16px 16px;
 }
 
@@ -144,34 +145,33 @@
 
 .cardDesc {
   font-size: 12px;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.6;
   margin: 0;
 }
 
-/* Arrow buttons - default hidden */
+/* ===== ARROWS ===== */
 .arrowLeft,
 .arrowRight {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 50%;
   width: 48px;
   height: 48px;
   font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #333;
   flex-shrink: 0;
-  opacity: 0;                        /* default hidden */
+  opacity: 0;
   transform: scale(0.8);
   transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s;
   pointer-events: none;
 }
 
-/* Hover par dikhega */
 .arrowVisible {
   opacity: 1;
   transform: scale(1);
@@ -185,7 +185,7 @@
   transform: scale(1.1);
 }
 
-/* Quote */
+/* ===== QUOTE ===== */
 .quoteSection {
   text-align: center;
   padding: 30px 200px;
@@ -230,4 +230,161 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   display: block;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* Large laptop (1024px – 1279px) */
+@media (max-width: 1279px) {
+  .title { font-size: 44px; }
+  .quoteSection { padding: 30px 100px; }
+  .quoteText { font-size: 20px; }
+}
+
+/* Small laptop (900px – 1023px) */
+@media (max-width: 1023px) {
+  .title { font-size: 38px; }
+  .subtitle { font-size: 15px; }
+
+  .cardSmall {
+    min-width: 190px;
+    max-width: 190px;
+    height: 250px;
+  }
+
+  .cardBig {
+    min-width: 260px;
+    max-width: 260px;
+    height: 310px;
+  }
+
+  .quoteSection { padding: 30px 60px; }
+  .quoteText { font-size: 18px; }
+  .quoteMark { font-size: 60px; }
+}
+
+/* Tablet (768px – 899px) */
+@media (max-width: 899px) {
+  .section { margin-top: -20px; }
+  .title { font-size: 34px; }
+  .header { margin-bottom: 36px; }
+
+  /* Arrows always visible on tablet (no reliable hover) */
+  .arrowLeft,
+  .arrowRight {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .cardSmall {
+    min-width: 170px;
+    max-width: 170px;
+    height: 230px;
+  }
+
+  .cardBig {
+    min-width: 230px;
+    max-width: 230px;
+    height: 285px;
+  }
+
+  .cardTitle { font-size: 14px; }
+  .cardDesc { font-size: 11px; }
+
+  .quoteSection { padding: 24px 40px; }
+  .quoteText { font-size: 16px; }
+  .quoteMark { font-size: 50px; }
+}
+
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
+  .section { padding: 16px 0 40px; margin-top: 0; }
+  .header { margin-bottom: 28px; padding: 0 16px; }
+
+  .title { font-size: 28px; }
+  .tagline { font-size: 12px; letter-spacing: 2px; }
+  .subtitle { font-size: 14px; }
+
+  /* Arrows always visible on mobile */
+  .arrowLeft,
+  .arrowRight {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .sliderWrapper { gap: 8px; padding: 0 8px; }
+
+  /* All cards same uniform size on mobile */
+  .cardSmall,
+  .cardBig {
+    min-width: 200px;
+    max-width: 200px;
+    height: 260px;
+  }
+
+  .track { gap: 12px; padding: 12px 4px 20px; }
+
+  .cardTitle { font-size: 14px; }
+  .cardDesc { font-size: 11px; line-height: 1.5; }
+
+  .quoteSection { padding: 20px 20px; }
+  .quoteText { font-size: 15px; line-height: 1.7; }
+  .quoteMark { font-size: 44px; }
+  .quoteAuthor { font-size: 12px; }
+}
+
+/* Small mobile (≤480px) */
+@media (max-width: 480px) {
+  .title { font-size: 24px; }
+  .subtitle { font-size: 13px; }
+
+  .arrowLeft,
+  .arrowRight {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .cardSmall,
+  .cardBig {
+    min-width: 170px;
+    max-width: 170px;
+    height: 230px;
+  }
+
+  .cardTitle { font-size: 13px; }
+  .cardDesc { font-size: 10px; }
+
+  .quoteSection { padding: 16px 16px; }
+  .quoteText { font-size: 13px; }
+  .quoteMark { font-size: 36px; }
+}
+
+/* Very small (≤360px) */
+@media (max-width: 360px) {
+  .title { font-size: 22px; }
+
+  .cardSmall,
+  .cardBig {
+    min-width: 150px;
+    max-width: 150px;
+    height: 210px;
+  }
+
+  .arrowLeft,
+  .arrowRight {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
 }

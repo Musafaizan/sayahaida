@@ -5,8 +5,9 @@ import styles from './herosection.module.css';
 const Herosection = () => {
   const [playing, setPlaying] = useState(false);
   const youtubeId = "8jSdLOWWiiY";
-return (
-  <div id="about" className={styles.aboutContainer}>
+
+  return (
+    <div id="about" className={styles.aboutContainer}>
 
       {/* LEFT */}
       <div className={styles.leftContent}>
@@ -32,6 +33,8 @@ return (
 
       {/* RIGHT */}
       <div className={styles.rightContent}>
+
+        {/* Video */}
         {!playing ? (
           <div className={styles.videoThumb} onClick={() => setPlaying(true)}>
             <img src="/eidhi.jpeg" alt="Edhi Foundation" />
@@ -55,7 +58,7 @@ return (
           />
         )}
 
-        {/* Stats video ke neeche */}
+        {/* Stats */}
         <div className={styles.statsRow}>
           <div className={styles.statCard}>
             <h2 className={styles.statNum}>10K+</h2>
@@ -72,7 +75,6 @@ return (
         </div>
 
       </div>
-
     </div>
   );
 };

@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from './imageslider.module.css';
 
 const programs = [
@@ -13,7 +13,7 @@ const programs = [
         title: "Education Support",
         desc: "Bearing educational expenses for white-collar families' children and orphans to ensure they continue their studies."
     },
-     {
+    {
         img: "/sg.jpeg",
         title: "Water Filtration",
         desc: "Ensuring access to clean and safe drinking water by installing water filtration plants in underserved communities."
@@ -38,7 +38,7 @@ const programs = [
         title: "Environmental Awareness",
         desc: "Spreading awareness about environmental protection, waste management, and sustainable living through community programs and campaigns."
     },
-   {
+    {
         img: "/s5.jpeg",
         title: "Community Growth",
         desc: "From a small initiative during a crisis to a growing movement of compassion — we continue to expand our reach."
@@ -48,20 +48,30 @@ const programs = [
         title: "Medical Care",
         desc: "Providing essential medical assistance, free checkups, and medicines to families who cannot afford healthcare."
     }
-
 ];
 
 const ImageSlider = () => {
     const trackRef = useRef(null);
     const [hovering, setHovering] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detect mobile/tablet — arrows always visible on touch devices
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 899);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
 
     const scrollLeft = () => {
-        trackRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+        trackRef.current.scrollBy({ left: -300, behavior: 'smooth' });
     };
 
     const scrollRight = () => {
-        trackRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+        trackRef.current.scrollBy({ left: 300, behavior: 'smooth' });
     };
+
+    const showArrows = hovering || isMobile;
 
     return (
         <section id="facilities" className={styles.section}>
@@ -79,17 +89,18 @@ const ImageSlider = () => {
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
             >
-
                 <button
-                    className={`${styles.arrowLeft} ${hovering ? styles.arrowVisible : ''}`}
+                    className={`${styles.arrowLeft} ${showArrows ? styles.arrowVisible : ''}`}
                     onClick={scrollLeft}
+                    aria-label="Scroll left"
                 >
                     &#8592;
                 </button>
 
                 <div className={styles.track} ref={trackRef}>
                     {programs.map((item, i) => {
-                        const isCenter = i % 2 === 1; // index 1,3 bari — 0,2,4 choti
+                        // On mobile: all same size. On desktop: alternating big/small
+                        const isCenter = !isMobile && i % 2 === 1;
                         return (
                             <div
                                 className={`${styles.card} ${isCenter ? styles.cardBig : styles.cardSmall}`}
@@ -107,10 +118,10 @@ const ImageSlider = () => {
                     })}
                 </div>
 
-                {/* Right Arrow - sirf hover par dikhega */}
                 <button
-                    className={`${styles.arrowRight} ${hovering ? styles.arrowVisible : ''}`}
+                    className={`${styles.arrowRight} ${showArrows ? styles.arrowVisible : ''}`}
                     onClick={scrollRight}
+                    aria-label="Scroll right"
                 >
                     &#8594;
                 </button>

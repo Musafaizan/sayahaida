@@ -4,16 +4,9 @@
   align-items: center;
   text-align: center;
   position: relative;
-  bottom: 0px;
-    margin: 0 auto;  /* center karo */
-  overflow-x: hidden
-}
-
-.reportIcon {
-  position: absolute;
-  top: 60px;
-  font-size: 30px;
-  color: #f5a623;
+  margin: 0 auto;
+  overflow-x: hidden;
+  padding: 0 20px;
 }
 
 .reportTitle {
@@ -36,7 +29,6 @@
   margin: 0 0 16px;
 }
 
-/* Orange underline */
 .reportSubtitle::after {
   content: "";
   display: block;
@@ -59,6 +51,8 @@
   text-align: left;
   margin-top: 16px;
 }
+
+/* ===== DESKTOP: absolute layout ===== */
 .imagesWrapper {
   position: relative;
   width: 100%;
@@ -77,18 +71,9 @@
   top: 0;
 }
 
-.imageContainer1 {
-  left: 90px;
-}
-
-.imageContainer2 {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.imageContainer3 {
-  right: 90px;
-}
+.imageContainer1 { left: 90px; }
+.imageContainer2 { left: 50%; transform: translateX(-50%); }
+.imageContainer3 { right: 90px; }
 
 .reportImage1,
 .reportImage2,
@@ -217,7 +202,7 @@
   opacity: 1;
 }
 
-/* ========== POPUP 1 - Ration Packages ========== */
+/* ========== POPUP 1 ========== */
 .popup1 {
   position: absolute;
   top: -25px;
@@ -273,9 +258,7 @@
   transform: translateY(-3px);
 }
 
-.popular1 {
-  border: 2px solid orange;
-}
+.popular1 { border: 2px solid orange; }
 
 .popular1Badge {
   position: absolute;
@@ -348,19 +331,15 @@
   transition: 0.3s ease;
 }
 
-.sponsor1Btn:hover {
-  background: #e06500;
-}
+.sponsor1Btn:hover { background: #e06500; }
 
-/* ========== POPUP 2 - Iftar for Needy ========== */
+/* ========== POPUP 2 ========== */
 .popup2 {
   z-index: 999;
   text-align: left;
   background: #fff;
   border-radius: 16px;
   width: 520px;
-  top: -8px;
-  left: 35%;
   padding: 50px;
   position: absolute;
   top: -10px;
@@ -390,20 +369,17 @@
 .iftar2Card {
   background: #fee9d0;
   border-radius: 10px;
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
   width: 50%;
   margin-bottom: 15px;
   padding: 10px 9px;
-  display: flex;
   margin-left: 110px;
 }
 
-.iftar2Emoji {
-  font-size: 25px;
-  flex-shrink: 0;
-}
+.iftar2Emoji { font-size: 25px; flex-shrink: 0; }
 
 .iftar2Highlight {
   font-size: 13px;
@@ -428,11 +404,9 @@
   margin-left: 60px;
 }
 
-.iftar2Btn:hover {
-  background: #e06500;
-}
+.iftar2Btn:hover { background: #e06500; }
 
-/* ========== POPUP 3 - Orphan Iftar ========== */
+/* ========== POPUP 3 ========== */
 .popup3 {
   z-index: 999;
   text-align: left;
@@ -468,7 +442,6 @@
 .iftar3Card {
   background: rgb(254, 233, 208);
   border-radius: 10px;
-  padding: 12px 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -476,14 +449,10 @@
   width: 50%;
   margin-bottom: 15px;
   padding: 10px 9px;
-  display: flex;
   margin-left: 110px;
 }
 
-.iftar3Emoji {
-  font-size: 25px;
-  flex-shrink: 0;
-}
+.iftar3Emoji { font-size: 25px; flex-shrink: 0; }
 
 .iftar3Highlight {
   font-size: 13px;
@@ -508,6 +477,223 @@
   margin-left: 60px;
 }
 
-.iftar3Btn:hover {
-  background: #e06500;
+.iftar3Btn:hover { background: #e06500; }
+
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* Large laptop (1024px – 1279px) */
+@media (max-width: 1279px) {
+  .imageContainer1 { left: 40px; }
+  .imageContainer3 { right: 40px; }
+
+  .reportImage1,
+  .reportImage2,
+  .reportImage3 {
+    width: 280px;
+    height: 320px;
+  }
+
+  .popup1 { width: 500px; left: 170%; }
+  .popup2 { width: 460px; padding: 36px; }
+  .popup3 { width: 460px; padding: 36px; }
+}
+
+/* Small laptop / large tablet (900px – 1023px) */
+@media (max-width: 1023px) {
+  .reportSubtitle { font-size: 44px; }
+
+  .imageContainer1 { left: 10px; }
+  .imageContainer3 { right: 10px; }
+
+  .reportImage1,
+  .reportImage2,
+  .reportImage3 {
+    width: 240px;
+    height: 290px;
+  }
+
+  .imagesWrapper { margin-bottom: 700px; }
+
+  /* Popups become fixed-position overlays */
+  .popup1,
+  .popup2,
+  .popup3 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 9999;
+  }
+
+  .iftar2Card,
+  .iftar3Card {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .iftar2Btn,
+  .iftar3Btn {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Tablet + Mobile — full responsive stack (≤768px) */
+@media (max-width: 768px) {
+  .reportSubtitle { font-size: 36px; }
+  .reportDescription { font-size: 14px; }
+
+  /* Switch from absolute to flex column layout */
+  .imagesWrapper {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .imageContainer1,
+  .imageContainer2,
+  .imageContainer3 {
+    position: static;
+    width: 100%;
+    max-width: 400px;
+    transform: none;
+    left: auto;
+    right: auto;
+  }
+
+  .reportImage1,
+  .reportImage2,
+  .reportImage3 {
+    width: 100%;
+    height: 300px;
+  }
+
+  /* Arrow always visible on mobile (no hover on touch) */
+  .hoverArrow {
+    opacity: 1;
+    bottom: 16px;
+  }
+
+  /* Popups: fixed centered overlay */
+  .popup1,
+  .popup2,
+  .popup3 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92vw;
+    max-width: 480px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 20px;
+    z-index: 9999;
+  }
+
+  .popup1Cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .package1Card {
+    width: 100%;
+  }
+
+  .iftar2Card,
+  .iftar3Card {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .iftar2Btn,
+  .iftar3Btn {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  .reportTitle { margin-top: 60px; font-size: 13px; }
+  .reportSubtitle { font-size: 28px; }
+  .reportDescription { font-size: 13px; }
+
+  .imagesWrapper { gap: 20px; margin-top: 28px; }
+
+  .reportImage1,
+  .reportImage2,
+  .reportImage3 {
+    height: 260px;
+  }
+
+  .reportImage1 h3,
+  .reportImage2 h3,
+  .reportImage3 h3 {
+    font-size: 18px;
+    right: 80px;
+  }
+
+  .reportImage1 p,
+  .reportImage2 p,
+  .reportImage3 p {
+    font-size: 13px;
+    right: 20px;
+    top: 120px;
+  }
+
+  .popup1,
+  .popup2,
+  .popup3 {
+    padding: 16px;
+    width: 94vw;
+  }
+
+  .popup1Title,
+  .popup2Title,
+  .popup3Title {
+    font-size: 18px;
+  }
+
+  .popup1Desc,
+  .popup2Desc,
+  .popup3Desc {
+    font-size: 12px;
+  }
+
+  .package1Price { font-size: 24px; }
+  .package1Name { font-size: 13px; }
+
+  .iftar2Highlight,
+  .iftar3Highlight {
+    font-size: 12px;
+  }
+}
+
+/* Very small mobile (≤360px) */
+@media (max-width: 360px) {
+  .reportSubtitle { font-size: 24px; }
+
+  .reportImage1,
+  .reportImage2,
+  .reportImage3 {
+    height: 230px;
+  }
+
+  .reportImage1 h3,
+  .reportImage2 h3,
+  .reportImage3 h3 {
+    font-size: 16px;
+    right: 40px;
+  }
 }
